@@ -1,0 +1,6 @@
+colorama
+questionary
+pwinput
+argon2-cffi
+rich
+prompt_toolkit
