@@ -32,15 +32,16 @@ def ban_user(username: str, permission_level: str) -> None:
             if permission_level == "admin":
                 if data["role"] == "user": # Только если пользователь, админа и уж тем более владельца админ заблокировать не может!
                     users_available_to_ban.append(name)
-            elif permission_level == "owner": # Если владелец, то права не ограничены
-                users_available_to_ban.append(name)
+            elif permission_level == "owner":
+                if data["role"] in ("admin", "user"): # Владелец может заблокировать только админа и пользователя, но не другого владельца!
+                    users_available_to_ban.append(name)
 
     users_available_to_ban.append(cnf.CANCEL_OPTION)
 
     ban_menu = questionary.select("[BAN] Выберите, кого заблокировать:", users_available_to_ban, use_shortcuts=True)
     user_to_ban = ban_menu.ask()
 
-    if (user_to_ban is None) or (user_to_ban == cnf.EXIT_OPTION):
+    if (user_to_ban is None) or (user_to_ban == cnf.CANCEL_OPTION):
         print(cnf.RED + "[!] Отмена")
 
         return
