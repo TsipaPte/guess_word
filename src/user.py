@@ -119,7 +119,7 @@ def user_win(username: str) -> None:
         win_dialog = ptk.shortcuts.message_dialog("Победа!", f"Поздравляем с победой!\nВам добавили рейтинга: +{give_win}\nРейтинга: {elo_after_update}/{possible_next_rank_needs_elo}", style=cnf.GREEN_PTK_STYLE)
         win_dialog.run()
     else:
-        win_dialog = ptk.shortcuts.message_dialog("Победа!", f"Поздравляем с победой!\nВам добавили рейтинга: +{give_win}\nРейтинга: {cnf. MAX_RANK_BASE_ELO + elo_after_update}", style=cnf.GREEN_PTK_STYLE)
+        win_dialog = ptk.shortcuts.message_dialog("Победа!", f"Поздравляем с победой!\nВам добавили рейтинга: +{give_win}\nРейтинга: {elo_after_update}", style=cnf.GREEN_PTK_STYLE)
         win_dialog.run()
 
     if is_rank_up:
